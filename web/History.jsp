@@ -93,7 +93,8 @@
                         <div class="block1">
                             <div id="navbar" class="collapse navbar-collapse">
                                 <ul class="nav navbar-nav">  
-                                    <li><a href="ListAllEmergency"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> All Notification</a></li>                                   
+                                    <li><a href="ListAllEmergency"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> All Notification</a></li>                                   
+                                    <li><a href="StatusAccept"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Accepted </a></li>
                                     <li class="active"><a href="History"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Completed</a></li>
                                     <li><a href="Logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Log out</a></li>
                                 </ul>
@@ -116,7 +117,7 @@
                     <tr>
                         <th>No.</th>
                         <th>Case</th>
-                        <th>Location</th>
+                        <th>Place</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -126,14 +127,15 @@
                             List<Ticket> tickets = (List) request.getAttribute("tickets");
                             int count = 1;
                             for (Ticket t : tickets) {
+                                if(t.getStatusName().equalsIgnoreCase("Completed")){           
                     %>
                     <tr>
-                        <td><%=count++%></td>
+                        <td><%=t.getId()%></td>
                         <td><a href = "Detail?id=<%=t.getId()%>" target="_blank"><%=t.getName()%></a></td>
                         <td><%=t.getPlace()%></td>
                         <td><%=t.getStatusName()%> </td>
                     </tr>
-                    <%
+                    <% }
                         }
                     } else {
 

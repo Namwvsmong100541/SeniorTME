@@ -44,6 +44,10 @@
         <servlet-name>History</servlet-name>
         <servlet-class>tme.project.demo.servlet.History</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StatusAccept</servlet-name>
+        <servlet-class>tme.project.demo.servlet.StatusAccept</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UpdateStatus</servlet-name>
         <url-pattern>/UpdateStatus</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>History</servlet-name>
         <url-pattern>/History</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StatusAccept</servlet-name>
+        <url-pattern>/StatusAccept</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,3 +1,8 @@
+<%-- 
+    Document   : StatusAccept
+    Created on : Jun 25, 2019, 9:52:09 AM
+    Author     : LENOVO
+--%>
 
 <%@page import="tme.project.demo.model.Place"%>
 <%@page import="tme.project.demo.model.Ticket"%>
@@ -85,8 +90,8 @@
                         <div class="block1">
                             <div id="navbar" class="collapse navbar-collapse">
                                 <ul class="nav navbar-nav">                                      
-                                    <li class="active"><a href="UpdateStatus"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> All Notification</a></li>
-                                    <li><a href="StatusAccept"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Accepted </a></li>
+                                    <li><a href="UpdateStatus"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> All Notification</a></li>
+                                    <li class="active"><a href="StatusAccept"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Accepted </a></li>
                                     <li><a href="History"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Completed </a></li>
                                     <li><a href="Logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Log Out</a></li>
                                 </ul>
@@ -129,21 +134,22 @@
                     <%
                         List<Ticket> tickets = (List) request.getAttribute("tickets");
                         for (Ticket t : tickets) {
-                            if (t.getStatusName().equalsIgnoreCase("Waiting for response")) {
+                            if (t.getStatusName().equalsIgnoreCase("Accepted")) {
                     %>
                     <tr>
                         <td><%=t.getId()%></td>
                         <td><a href = "Detail?id=<%=t.getId()%>" ><%=t.getName()%></a></td>
-                        <td><%=t.getPlace()%></td> 
+                        <td><%=t.getPlace()%></td>
                         <td>    
                 <center>
-                    <form action="UpdateStatus" method="post" onsubmit="return confirm('You really want to change status?');">  
-                        <input type="hidden" name="id" value="<%=t.getId()%>">                                          
-                        <select  name="status" id="status" class="form-control">                           
-                            <option value="1" <%=t.getStatus() == 1 ? "selected" : ""%>>Accept</option>
-                        </select>                      
+                    <form action="StatusAccept" method="post" onsubmit="return confirm('You really want to change status?');">  
+                        <input type="hidden" name="id" value="<%=t.getId()%>">
+                        <select  name="status" id="status" class="form-control">                                 
+                            <option value="2" <%=t.getStatus() == 2 ? "selected" : ""%>>Complete</option>
+                        </select>                    
                         <button type='submit'><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
                     </form>
+ 
                 </center>
                 </td>
                 </tr>
